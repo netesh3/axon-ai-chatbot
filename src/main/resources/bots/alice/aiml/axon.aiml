@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0">
+<!-- -->
+<!-- Free software (c) 2011 ALICE A.I. Foundation.   -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License     -->
+<!-- as published by the Free Software Foundation.   -->
+<!-- Complies with AIML 1.0 Tag Set Specification -->
+<!-- as adopted by the ALICE A.I. Foundation.  -->
+<!-- Last modified 10/5/2011 -->
+<!-- -->
+<category><pattern>_ ALICE</pattern>
+<template>
+<think>
+<set name="savedtopic"><get name="topic"/></set>
+<set name="topic">ENDS WITH ALICE</set>
+<set name="matched">false</set>
+<set name="response"><srai><star/> BOTNAME</srai></set>
+</think>
+<condition name="matched">
+<li value="true"><get name="response"/></li>
+<li><srai><star/></srai></li>
+</condition>
+<think>
+<set name="topic"><get name="savedtopic"/></set>
+</think>
+</template>
+</category>
+
+<topic name="ENDS WITH ALICE">
+
+<category><pattern>TEST BOTNAME</pattern>
+<template><bot name="name"/> is functioning normally.
+<think><set name="matched">true</set></think>
+</template>
+</category>
+
+<category><pattern>CALL ME BOTNAME</pattern>
+<template>My name is <set name="name"><bot name="name"/></set> too!
+<think><set name="matched">true</set></think>
+</template>
+</category>
+
+</topic>
+
+<category><pattern>WHAT LANGUAGE DO YOU SPEAK </pattern>
+<template> I Speak in Hindi, and you?</template>
+</category>
+
+<category><pattern>WHAT IS AXON </pattern>
+<template> Axon is a data governance product that supports data stewardship, data quality and data monitoring. ... It provides data quality and compliance dashboards that monitor all of your governed assets, as well as more detailed assessments that are contextualised to each individual asset.</template>
+</category>
+
+<category><pattern>WHAT IS DATA GOVERNANCE </pattern>
+<template> All organizations need to plan how they use data so that it’s handled consistently throughout the business, to support business outcomes.This means that organizations who successfully do this consider the who – what – how – when – where and why of data to not only ensure security and compliance, but to extract value from all the information collected and stored across the business – improving business performance.</template>
+</category>
+
+<category>
+   <pattern>WHAT IS THE PRICE OF THE *</pattern>
+   <template>PRICE,The price of <star/> is,<star/> </template>
+</category>
+
+</aiml>
